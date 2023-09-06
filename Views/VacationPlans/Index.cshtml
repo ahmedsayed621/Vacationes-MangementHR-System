@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Vacationes_MangementHR_System.Models.RequestVacation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Vacation Plans</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationTypeId)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Approved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateApproved)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.employee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestDate)
+                </td>
+
+                <td style="background-color:@item.vacationType.BackgroundColor;color:#ffff;">
+                    @Html.DisplayFor(modelItem => item.StartDate)
+
+                </td>
+                <td style="background-color:@item.vacationType.BackgroundColor;color:#ffff;">
+                    @Html.DisplayFor(modelItem => item.vacationType.VacationName)
+                </td>
+                <td style="background-color:@item.vacationType.BackgroundColor;color:#ffff;">
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    <input type="checkbox" checked="@item.Approved" style="width:25px;height:25px" disabled>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateApproved)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-info">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

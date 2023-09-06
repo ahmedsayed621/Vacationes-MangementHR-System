@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Vacationes_MangementHR_System.Models.VacationType>
+
+@{
+    ViewData["Title"] = "VacationTypes";
+}
+
+<h1>VacationTypes</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BackgroundColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberDays)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VacationName)
+            </td>
+            <td style="color:#ffff;background-color:@item.BackgroundColor">
+                @Html.DisplayFor(modelItem => item.BackgroundColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberDays)
+            </td>
+            <td>
+                <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
